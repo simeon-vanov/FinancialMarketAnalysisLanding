@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "paths": {
+      "components/*": ["src/components/*"],
+      "icons/*": ["src/icons/*"],
+      "lib/*": ["src/lib/*"],
+      "hooks/*": ["src/hooks/*"],
+      "contexts/*": ["src/contexts/*"],
+      "hocs/*": ["src/hocs/*"],
+      "apis/*": ["src/apis/*"],
+      "utils/*": ["src/utils/*"],
+      "types/*": ["src/types/*"],
+      "configs/*": ["src/configs/*"],
+      "mocks/*": ["src/__fake-api__/*"],
+      "styles/*": ["src/styles/*"],
+      "services/*": ["src/services/*"]
+    },
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noImplicitAny": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "jsxImportSource": "@emotion/react",
+    "incremental": true
+  },
+  "include": ["src", "node_modules/simplebar-react/**/*.d.ts", "src/types/**/*.d.ts"],
+  "exclude": ["node_modules"]
+}
