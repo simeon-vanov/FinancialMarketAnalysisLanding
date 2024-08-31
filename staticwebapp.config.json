@@ -2,8 +2,16 @@
   "routes": [
     {
       "route": "/",
-      "redirect": "https://decodethetrade.com",
-      "statusCode": 301
+      "allowedRoles": ["anonymous"],
+      "redirect": {
+        "statusCode": 301,
+        "to": "https://decodethetrade.com/",
+        "includeQueryString": true
+      },
+      "statusCode": 200,
+      "conditions": {
+        "hostname": "www.decodethetrade.com"
+      }
     }
   ]
 }
