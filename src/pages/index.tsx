@@ -23,29 +23,21 @@ const Overview: NextPage = () => {
       <Head>
         <title>Decode The Trade</title>
       </Head>
-      <Box
-        component='main'
-        sx={{
-          flexGrow: 1
-        }}
-      >
-        <Hero />
-
-        <Box sx={{ bgcolor: 'background.default' }}>
-          <Divider />
-          <WhatIs />
-          <Divider />
-          <OurPromises />
-          <Divider />
-          <HowItWorks />
-          <Divider />
-          <WhatWeOffer />
-          <Divider />
-          <Pricing />
-          <Divider />
-          <FAQ />
-          <Footer />
-        </Box>
+      <Hero />
+      <Box>
+        <Divider />
+        <WhatIs />
+        <Divider />
+        <OurPromises />
+        <Divider />
+        <HowItWorks />
+        <Divider />
+        <WhatWeOffer />
+        <Divider />
+        <Pricing />
+        <Divider />
+        <FAQ />
+        <Footer />
       </Box>
     </>
   )

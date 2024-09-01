@@ -1,11 +1,11 @@
 import { styled } from '@mui/material/styles'
 
-type Variant = 'logo' | 'logo-2'
+type Variant = 'logo' | 'logo-2' | 'logo-4'
 
 interface LogoProps {
   variant?: Variant
-  width?: number
-  height?: number
+  width?: number | string
+  height?: number | string
 }
 
 const LogoComponent: React.FC<LogoProps> = (props) => {

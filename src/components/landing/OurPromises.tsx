@@ -4,7 +4,7 @@ import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
 import { Chip as MuiChip } from '@mui/material'
 import Container from '@mui/material/Container'
-import Grid from '@mui/material/Grid'
+import { Grid2 as Grid } from '@mui/material'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
@@ -79,7 +79,7 @@ export default function Features() {
   return (
     <Container id='features' sx={{ py: { xs: 8, sm: 16 } }}>
       <Grid container spacing={6}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <div>
             <Typography component='h2' variant='h4' sx={{ color: 'text.primary' }}>
               Our Promises
@@ -89,7 +89,7 @@ export default function Features() {
               spent less time analyzing and spent more time with their loved ones.
             </Typography>
           </div>
-          <Grid container item sx={{ gap: 1, display: { xs: 'auto', sm: 'none' } }}>
+          <Grid container sx={{ gap: 1, display: { xs: 'auto', sm: 'none' } }}>
             {items.map(({ title }, index) => (
               <Chip
                 key={index}
@@ -241,7 +241,7 @@ export default function Features() {
             <StartTrialButton fullWidth />
           </Stack>
         </Grid>
-        <Grid item xs={12} md={6} sx={{ display: { xs: 'none', sm: 'flex' }, width: '100%' }}>
+        <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', sm: 'flex' }, width: '100%' }}>
           <Card
             variant='outlined'
             sx={{

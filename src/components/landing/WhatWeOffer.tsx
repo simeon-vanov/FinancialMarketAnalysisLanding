@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Container, Grid, Stack, Typography } from '@mui/material'
+import { Box, Card, CardContent, Container, Grid2 as Grid, Stack, Typography } from '@mui/material'
 import { useSettings } from 'hooks/use-settings'
 import { StartTrialButton } from './start-trial-button'
 
@@ -121,9 +121,9 @@ export const WhatWeOffer = () => {
 
           return (
             <Grid container alignItems='center' spacing={4} key={index}>
-              <Grid item xs={12} sm={6} order={{ xs: 2, sm: isEven ? 1 : 2 }}>
+              <Grid size={{ xs: 12, sm: 6 }} order={{ xs: 2, sm: isEven ? 1 : 2 }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <Card sx={{ width: '80%' }}>
+                  <Card variant='outlined' sx={{ width: '80%' }}>
                     <CardContent>
                       <img
                         style={{ width: '100%', borderRadius: 8 }}
@@ -136,7 +136,7 @@ export const WhatWeOffer = () => {
                   <StartTrialButton sx={{ width: '80%' }} />
                 </Box>
               </Grid>
-              <Grid item xs={12} sm={6} order={{ xs: 1, sm: isEven ? 2 : 1 }}>
+              <Grid size={{ xs: 12, sm: 6 }} order={{ xs: 1, sm: isEven ? 2 : 1 }}>
                 <Stack spacing={2}>
                   <Typography
                     component='span'

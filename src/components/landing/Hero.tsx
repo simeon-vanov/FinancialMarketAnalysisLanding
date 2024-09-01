@@ -7,19 +7,21 @@ import Typography from '@mui/material/Typography'
 import { styled } from '@mui/material/styles'
 import { useTheme } from '@emotion/react'
 import { useState } from 'react'
-import { StartTrialButton } from './start-trial-button'
+import { visuallyHidden } from '@mui/utils'
+import { InputLabel, TextField } from '@mui/material'
 
 const StyledBox = styled('div')(({ theme }) => ({
-  position: 'relative',
   alignSelf: 'center',
   width: '100%',
   height: 400,
   marginTop: theme.spacing(8),
   borderRadius: theme.shape.borderRadius,
-  outline: '1px solid',
+  outline: '6px solid',
+  outlineColor: 'hsla(220, 25%, 80%, 0.2)',
+  border: '1px solid',
+  borderColor: theme.palette.grey[200],
   boxShadow: '0 0 12px 8px hsla(220, 25%, 80%, 0.2)',
   backgroundImage: `url(${'/static/screenshots/hero-light.png'})`,
-  outlineColor: 'hsla(220, 25%, 80%, 0.5)',
   backgroundSize: 'cover',
   cursor: 'pointer',
   display: 'flex',
@@ -35,7 +37,8 @@ const StyledBox = styled('div')(({ theme }) => ({
   ...theme.applyStyles('dark', {
     boxShadow: '0 0 24px 12px hsla(210, 100%, 25%, 0.2)',
     backgroundImage: `url(${'/static/screenshots/hero-dark.png'})`,
-    outlineColor: 'hsla(210, 100%, 80%, 0.1)'
+    outlineColor: 'hsla(220, 20%, 42%, 0.1)',
+    borderColor: theme.palette.grey[700]
   })
 }))
 
@@ -55,9 +58,6 @@ const PlayIndicator = styled('div')(({}) => ({
 }))
 
 export default function Hero() {
-  const handleDownloadGuide = () => {
-    window.open('/static/Decode The Perfect Trade - Book.pdf', '_blank')
-  }
   const [isVideoPlaying, setIsVideoPlaying] = useState(false)
 
   const theme = useTheme()
@@ -68,6 +68,7 @@ export default function Hero() {
       sx={(theme) => ({
         width: '100%',
         backgroundRepeat: 'no-repeat',
+
         backgroundImage: 'radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 90%), transparent)',
         ...theme.applyStyles('dark', {
           backgroundImage: 'radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 16%), transparent)'
@@ -84,39 +85,33 @@ export default function Hero() {
         }}
       >
         <Stack spacing={2} useFlexGap sx={{ alignItems: 'center', width: { xs: '100%', sm: '70%' } }}>
-          <Box
+          <Typography
+            variant='h1'
             sx={{
               display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
-              justifyContent: 'center',
+              flexDirection: { xs: 'column' },
               alignItems: 'center',
-              textAlign: 'center',
-              fontSize: 'clamp(5rem, 13vw, 5rem)'
+              fontSize: 'clamp(3rem, 10vw, 3.5rem)'
             }}
           >
-            <Typography
-              component='span'
-              variant='h1'
-              sx={{
-                fontSize: 'inherit'
-              }}
-            >
-              Decode the Past, Navigate the{' '}
+            Decode&nbsp;the&nbsp;Past,&nbsp;
+            <Typography component='span' variant='h1'>
+              Navigate&nbsp;the&nbsp;
               <Typography
                 component='span'
-                variant='h1'
-                sx={{
+                sx={(theme) => ({
                   fontSize: 'inherit',
                   color: 'primary.main',
                   ...theme.applyStyles('dark', {
                     color: 'primary.light'
                   })
-                }}
+                })}
               >
                 Future
               </Typography>
             </Typography>
-          </Box>
+          </Typography>
+
           <Typography
             sx={{
               textAlign: 'center',
@@ -131,11 +126,28 @@ export default function Hero() {
             direction={{ xs: 'column', sm: 'row' }}
             spacing={1}
             useFlexGap
-            sx={{ pt: 2, width: { xs: '100%', sm: 'auto' } }}
+            sx={{ pt: 2, width: { xs: '100%', sm: '350px' } }}
           >
-            <StartTrialButton />
-            <Button variant='contained' color='inherit' onClick={handleDownloadGuide}>
-              Welcome Bonus Book
+            <InputLabel htmlFor='email-hero' sx={visuallyHidden}>
+              Email
+            </InputLabel>
+            <TextField
+              id='email-hero'
+              hiddenLabel
+              size='small'
+              variant='outlined'
+              aria-label='Enter your email address'
+              placeholder='Your email address'
+              fullWidth
+              slotProps={{
+                htmlInput: {
+                  autoComplete: 'off',
+                  'aria-label': 'Enter your email address'
+                }
+              }}
+            />
+            <Button variant='contained' color='primary' size='small' sx={{ minWidth: 'fit-content' }}>
+              Join the Waitlist
             </Button>
           </Stack>
         </Stack>

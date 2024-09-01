@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Grid, Typography } from '@mui/material'
+import { Box, Card, CardContent, Grid2, Typography } from '@mui/material'
 import { useSettings } from 'hooks/use-settings'
 
 export const HowItWorks = () => {
@@ -29,9 +29,9 @@ export const HowItWorks = () => {
         How It Works?
       </Typography>
 
-      <Grid container width={'100%'} alignItems='center' spacing={2}>
-        <Grid item xs={12} sm={6} lg={3}>
-          <Card sx={{ textAlign: 'center' }}>
+      <Grid2 container width={'100%'} alignItems='center' spacing={2}>
+        <Grid2 size={{ xs: 12, sm: 6, lg: 3 }}>
+          <Card variant='outlined' sx={{ textAlign: 'center' }}>
             <CardContent>
               <Typography variant='h6'>Step 1 - Asset Selection</Typography>
               <Typography variant='subtitle1' gutterBottom>
@@ -44,9 +44,9 @@ export const HowItWorks = () => {
               />
             </CardContent>
           </Card>
-        </Grid>
-        <Grid item xs={12} sm={6} lg={3}>
-          <Card sx={{ textAlign: 'center' }}>
+        </Grid2>
+        <Grid2 size={{ xs: 12, sm: 6, lg: 3 }}>
+          <Card variant='outlined' sx={{ textAlign: 'center' }}>
             <CardContent>
               <Typography variant='h6'>Step 2 - Analyze Trend</Typography>
               <Typography variant='subtitle1' gutterBottom>
@@ -59,9 +59,9 @@ export const HowItWorks = () => {
               />
             </CardContent>
           </Card>
-        </Grid>
-        <Grid item xs={12} sm={6} lg={3}>
-          <Card sx={{ textAlign: 'center' }}>
+        </Grid2>
+        <Grid2 size={{ xs: 12, sm: 6, lg: 3 }}>
+          <Card variant='outlined' sx={{ textAlign: 'center' }}>
             <CardContent>
               <Typography variant='h6'>Step 3 - Find an Entry</Typography>
               <Typography variant='subtitle1' gutterBottom>
@@ -74,13 +74,13 @@ export const HowItWorks = () => {
               />
             </CardContent>
           </Card>
-        </Grid>
-        <Grid item xs={12} sm={6} lg={3}>
-          <Card sx={{ textAlign: 'center' }}>
+        </Grid2>
+        <Grid2 size={{ xs: 12, sm: 6, lg: 3 }}>
+          <Card variant='outlined' sx={{ textAlign: 'center' }}>
             <CardContent>
               <Typography variant='h6'>Step 4 - Manage Risk</Typography>
               <Typography variant='subtitle1' gutterBottom>
-                Pick a stop loss, target profit and monitor continously
+                Pick a stop loss, target profit and monitor the trade continously
               </Typography>
               <img
                 src={`/static/screenshots/risk management-${settings.theme}.png`}
@@ -89,8 +89,8 @@ export const HowItWorks = () => {
               />
             </CardContent>
           </Card>
-        </Grid>
-      </Grid>
+        </Grid2>
+      </Grid2>
     </Box>
   )
 }

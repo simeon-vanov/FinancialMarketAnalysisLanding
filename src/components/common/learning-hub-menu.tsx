@@ -32,7 +32,7 @@ const LearningHubMenu = () => {
 
   return (
     <Fragment>
-      <Button variant='text' color='info' onClick={handleClick}>
+      <Button variant='text' color='info' size='small' onClick={handleClick}>
         Learning Hub
       </Button>
       <Menu

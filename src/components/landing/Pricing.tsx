@@ -7,7 +7,7 @@ import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import Container from '@mui/material/Container'
 import Divider from '@mui/material/Divider'
-import Grid from '@mui/material/Grid'
+import { Grid2 as Grid } from '@mui/material'
 import Typography from '@mui/material/Typography'
 
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
@@ -123,8 +123,9 @@ export default function Pricing() {
       </Box>
       <Grid container spacing={3} sx={{ alignItems: 'center', justifyContent: 'center' }}>
         {tiers.map((tier) => (
-          <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
+          <Grid size={{ xs: 12, sm: tier.title === 'Enterprise' ? 12 : 6, md: 4 }} key={tier.title}>
             <Card
+              variant='outlined'
               sx={[
                 {
                   p: 2,

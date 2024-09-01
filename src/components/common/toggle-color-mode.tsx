@@ -4,7 +4,7 @@ import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded'
 import ModeNightRoundedIcon from '@mui/icons-material/ModeNightRounded'
 import { useSettings } from 'hooks/use-settings'
 
-export default function ToggleColorMode() {
+export default function ToggleColorMode({ smallScreen }: { smallScreen?: boolean }) {
   const { settings, saveSettings } = useSettings()
   const handleThemeToggle = () => {
     saveSettings({ ...settings, theme: settings.theme == 'dark' ? 'light' : 'dark' })
@@ -15,8 +15,8 @@ export default function ToggleColorMode() {
       onClick={handleThemeToggle}
       color='primary'
       aria-label='Theme toggle button'
-      size='small'
-      sx={{ ml: 1 }}
+      size={smallScreen ? 'medium' : 'small'}
+      sx={{ ml: 1, mr: smallScreen ? 1 : 0 }}
     >
       {settings.theme === 'dark' ? <WbSunnyRoundedIcon fontSize='small' /> : <ModeNightRoundedIcon fontSize='small' />}
     </IconButton>

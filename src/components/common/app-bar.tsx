@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { styled, alpha } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
@@ -16,6 +17,20 @@ import { Logo as Sitemark } from './logo'
 import { useRouter } from 'next/router'
 import LearningHubMenu from './learning-hub-menu'
 
+const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  flexShrink: 0,
+  borderRadius: `calc(${theme.shape.borderRadius}px + 8px)`,
+  backdropFilter: 'blur(24px)',
+  border: '1px solid',
+  borderColor: theme.palette.divider,
+  backgroundColor: alpha(theme.palette.background.default, 0.4),
+  boxShadow: theme.shadows[1],
+  padding: '8px 12px'
+}))
+
 export default function AppAppBar() {
   const [open, setOpen] = React.useState(false)
   const router = useRouter()
@@ -25,36 +40,29 @@ export default function AppAppBar() {
   }
 
   return (
-    <AppBar position='fixed' sx={{ boxShadow: 0, bgcolor: 'transparent', backgroundImage: 'none', mt: 2 }}>
+    <AppBar position='fixed' sx={{ boxShadow: 0, bgcolor: 'transparent', backgroundImage: 'none', mt: 3 }}>
       <Container maxWidth='lg'>
-        <Toolbar
-          variant='regular'
-          sx={(theme) => ({
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexShrink: 0,
-            borderRadius: '999px',
-            backdropFilter: 'blur(24px)',
-            maxHeight: 40,
-            border: '1px solid',
-            borderColor: 'divider',
-            bgcolor: 'hsla(220, 60%, 99%, 0.6)',
-            boxShadow: '0 1px 2px hsla(210, 0%, 0%, 0.05), 0 2px 12px hsla(210, 100%, 80%, 0.5)',
-            ...theme.applyStyles('dark', {
-              bgcolor: 'hsla(220, 0%, 0%, 0.7)',
-              boxShadow: '0 1px 2px hsla(210, 0%, 0%, 0.5), 0 2px 12px hsla(210, 100%, 25%, 0.3)'
-            })
-          })}
-        >
+        <StyledToolbar variant='dense' disableGutters>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
-            <Sitemark height={62} width={124} sx={{ mr: 2, p: 1 }} />
+            <Sitemark sx={{ mr: 1 }} height={21} variant='logo-4' />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Button variant='text' color='info' onClick={() => router.push('/screener')}>
-                Screener
+              <Button variant='text' color='info' size='small'>
+                About The Platform
               </Button>
-              <Button variant='text' color='info' onClick={() => router.push('/chart')}>
-                Insights
+              <Button variant='text' color='info' size='small'>
+                Our Promises
+              </Button>
+              <Button variant='text' color='info' size='small'>
+                How It Works
+              </Button>
+              <Button variant='text' color='info' size='small'>
+                How You Benefit
+              </Button>
+              <Button variant='text' color='info' size='small'>
+                Pricing
+              </Button>
+              <Button variant='text' color='info' size='small' sx={{ minWidth: 0 }}>
+                FAQ
               </Button>
               <LearningHubMenu />
             </Box>
@@ -62,13 +70,14 @@ export default function AppAppBar() {
           <Box
             sx={{
               display: { xs: 'none', md: 'flex' },
-              gap: 0.5,
+              gap: 1,
               alignItems: 'center'
             }}
           >
             <ToggleColorMode />
           </Box>
           <Box sx={{ display: { sm: 'flex', md: 'none' } }}>
+            <ToggleColorMode smallScreen={true} />
             <IconButton aria-label='Menu button' onClick={toggleDrawer(true)}>
               <MenuIcon />
             </IconButton>
@@ -81,18 +90,21 @@ export default function AppAppBar() {
                     justifyContent: 'space-between'
                   }}
                 >
-                  <ToggleColorMode />
                   <IconButton onClick={toggleDrawer(false)}>
                     <CloseRoundedIcon />
                   </IconButton>
                 </Box>
                 <Divider sx={{ my: 3 }} />
-                <MenuItem onClick={() => router.push('/screener')}>Screener</MenuItem>
-                <MenuItem onClick={() => router.push('/chart')}>Insights</MenuItem>
+                <MenuItem>About The Platform</MenuItem>
+                <MenuItem>How It Works</MenuItem>
+                <MenuItem>What We Offer</MenuItem>
+                <MenuItem>Pricing</MenuItem>
+                <MenuItem>FAQ</MenuItem>
+                <MenuItem>Blog</MenuItem>
               </Box>
             </Drawer>
           </Box>
-        </Toolbar>
+        </StyledToolbar>
       </Container>
     </AppBar>
   )
