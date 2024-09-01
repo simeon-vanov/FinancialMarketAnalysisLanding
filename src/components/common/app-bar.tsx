@@ -14,7 +14,6 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 import ToggleColorMode from './toggle-color-mode'
 
 import { Logo as Sitemark } from './logo'
-import { useRouter } from 'next/router'
 import LearningHubMenu from './learning-hub-menu'
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -33,7 +32,6 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 export default function AppAppBar() {
   const [open, setOpen] = React.useState(false)
-  const router = useRouter()
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen)
