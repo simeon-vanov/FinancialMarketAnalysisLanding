@@ -12,6 +12,7 @@ import { Footer } from 'components/landing/footer'
 import { WhatIs } from 'components/landing/WhatIs'
 import { HowItWorks } from 'components/landing/HowItWorks'
 import { WhatWeOffer } from 'components/landing/WhatWeOffer'
+import { Element } from 'react-scroll'
 
 const Overview: NextPage = () => {
   useEffect(() => {
@@ -26,17 +27,29 @@ const Overview: NextPage = () => {
       <Hero />
       <Box>
         <Divider />
-        <WhatIs />
+        <Element name='what-is'>
+          <WhatIs />
+        </Element>
         <Divider />
-        <OurPromises />
+        <Element name='our-promise'>
+          <OurPromises />
+        </Element>
         <Divider />
-        <HowItWorks />
+        <Element name='how-it-works'>
+          <HowItWorks />
+        </Element>
         <Divider />
-        <WhatWeOffer />
+        <Element name='what-we-offer'>
+          <WhatWeOffer />
+        </Element>
         <Divider />
-        <Pricing />
+        <Element name='pricing'>
+          <Pricing />
+        </Element>
         <Divider />
-        <FAQ />
+        <Element name='faq'>
+          <FAQ />
+        </Element>
         <Footer />
       </Box>
     </>

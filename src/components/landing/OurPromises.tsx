@@ -127,6 +127,7 @@ export default function Features() {
               <Link
                 color='primary'
                 variant='body2'
+                href='/learning/how-to-use'
                 sx={{
                   fontWeight: 'bold',
                   display: 'inline-flex',
@@ -223,6 +224,7 @@ export default function Features() {
                       onClick={(event) => {
                         event.stopPropagation()
                       }}
+                      href='/learning/how-to-use'
                       sx={{
                         fontWeight: 'bold',
                         display: 'inline-flex',

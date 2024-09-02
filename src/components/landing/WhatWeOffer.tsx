@@ -69,9 +69,7 @@ export const WhatWeOffer = () => {
   const { settings } = useSettings()
   return (
     <Container
-      maxWidth={false}
       sx={{
-        maxWidth: '1600px',
         pt: { xs: 4, sm: 12 },
         pb: { xs: 8, sm: 16 },
         px: { xs: 2, sm: 6, md: 12, lg: 16 },
@@ -115,7 +113,7 @@ export const WhatWeOffer = () => {
         </Typography>
       </Stack>
 
-      <Stack spacing={1} useFlexGap>
+      <Stack spacing={2} useFlexGap>
         {items.map((item, index) => {
           const isEven = index % 2 === 0
 
@@ -123,10 +121,10 @@ export const WhatWeOffer = () => {
             <Grid container alignItems='center' spacing={4} key={index}>
               <Grid size={{ xs: 12, sm: 6 }} order={{ xs: 2, sm: isEven ? 1 : 2 }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <Card variant='outlined' sx={{ width: '80%' }}>
-                    <CardContent>
+                  <Card variant='outlined' sx={{ width: '70%', alignItems: 'center' }}>
+                    <CardContent sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                       <img
-                        style={{ width: '100%', borderRadius: 8 }}
+                        style={{ width: '90%', borderRadius: 8 }}
                         src={`/static/screenshots/${item.image}-${settings.theme}.png`}
                         alt={`Screenshot of ${item.title}`}
                       />

@@ -12,9 +12,11 @@ import Drawer from '@mui/material/Drawer'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 import ToggleColorMode from './toggle-color-mode'
-
+import { useRouter } from 'next/router'
 import { Logo as Sitemark } from './logo'
 import LearningHubMenu from './learning-hub-menu'
+import { Link, scroller } from 'react-scroll'
+import { useEffect } from 'react'
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
@@ -37,29 +39,55 @@ export default function AppAppBar() {
     setOpen(newOpen)
   }
 
+  const router = useRouter()
+
+  useEffect(() => {
+    if (router.asPath == '/') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Smooth scrolling
+      })
+
+      return
+    }
+
+    const hash = router.asPath
+    if (hash) {
+      scroller.scrollTo(hash.slice(2), {
+        duration: 800,
+        delay: 0,
+        smooth: 'easeInOutQuart'
+      })
+    }
+  }, [router.asPath])
+
+  const handleNavigate = (path: string) => {
+    router.push(`/#${path}`).catch(console.error)
+  }
+
   return (
     <AppBar position='fixed' sx={{ boxShadow: 0, bgcolor: 'transparent', backgroundImage: 'none', mt: 3 }}>
       <Container maxWidth='lg'>
         <StyledToolbar variant='dense' disableGutters>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
-            <Sitemark sx={{ mr: 1 }} height={21} variant='logo-4' />
+            <Sitemark onClick={() => router.push('/')} sx={{ mr: 1 }} height={21} variant='logo-4' />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Button variant='text' color='info' size='small'>
+              <Button variant='text' color='info' size='small' onClick={() => handleNavigate('what-is')}>
                 About The Platform
               </Button>
-              <Button variant='text' color='info' size='small'>
+              <Button variant='text' color='info' size='small' onClick={() => handleNavigate('our-promise')}>
                 Our Promises
               </Button>
-              <Button variant='text' color='info' size='small'>
+              <Button variant='text' color='info' size='small' onClick={() => handleNavigate('how-it-works')}>
                 How It Works
               </Button>
-              <Button variant='text' color='info' size='small'>
+              <Button variant='text' color='info' size='small' onClick={() => handleNavigate('what-we-offer')}>
                 How You Benefit
               </Button>
-              <Button variant='text' color='info' size='small'>
+              <Button variant='text' color='info' size='small' onClick={() => handleNavigate('pricing')}>
                 Pricing
               </Button>
-              <Button variant='text' color='info' size='small' sx={{ minWidth: 0 }}>
+              <Button variant='text' color='info' size='small' onClick={() => handleNavigate('faq')}>
                 FAQ
               </Button>
               <LearningHubMenu />
@@ -93,12 +121,37 @@ export default function AppAppBar() {
                   </IconButton>
                 </Box>
                 <Divider sx={{ my: 3 }} />
-                <MenuItem>About The Platform</MenuItem>
-                <MenuItem>How It Works</MenuItem>
-                <MenuItem>What We Offer</MenuItem>
-                <MenuItem>Pricing</MenuItem>
-                <MenuItem>FAQ</MenuItem>
-                <MenuItem>Blog</MenuItem>
+                <MenuItem>
+                  <Link to='what-is' smooth={true}>
+                    About The Platform
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to='our-promise' smooth={true}>
+                    Our Promises
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to='how-it-works' smooth={true}>
+                    How It Works
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to='what-we-offer' smooth={true}>
+                    What We Offer
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to='pricing' smooth={true}>
+                    Pricing
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to='faq' smooth={true}>
+                    FAQ
+                  </Link>
+                </MenuItem>
+                <LearningHubMenu />
               </Box>
             </Drawer>
           </Box>

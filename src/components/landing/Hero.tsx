@@ -27,7 +27,7 @@ const StyledBox = styled('div')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  '&:hover .play-indicator': {
+  '& .play-indicator': {
     opacity: 1
   },
   [theme.breakpoints.up('sm')]: {
@@ -94,9 +94,9 @@ export default function Hero() {
               fontSize: 'clamp(3rem, 10vw, 3.5rem)'
             }}
           >
-            Decode&nbsp;the&nbsp;Past,&nbsp;
+            Decode the Past,&nbsp;
             <Typography component='span' variant='h1'>
-              Navigate&nbsp;the&nbsp;
+              Navigate the&nbsp;
               <Typography
                 component='span'
                 sx={(theme) => ({
@@ -119,8 +119,15 @@ export default function Hero() {
               width: { sm: '100%', md: '80%' }
             }}
           >
-            Leave losing trades in the past. We provide actionable insights to boost your trading success and turn
-            potential into profit.
+            Leave the losing trades in the past. Join the waitlist to get{' '}
+            <Typography component='span' sx={{ fontWeight: 'bold' }}>
+              14 days free trial
+            </Typography>{' '}
+            and a code for a{' '}
+            <Typography component='span' sx={{ fontWeight: 'bold' }}>
+              20% discount for the first 3 months
+            </Typography>
+            .
           </Typography>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}

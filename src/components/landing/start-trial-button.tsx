@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, ButtonProps } from '@mui/material'
 import { useTranslation } from 'react-i18next'
-import { useSubscription } from 'hooks/use-subscription'
 
 interface StartTrialButtonProps extends ButtonProps {
   // Add any additional props specific to StartTrialButton here
@@ -9,16 +8,11 @@ interface StartTrialButtonProps extends ButtonProps {
 
 export const StartTrialButton: React.FC<StartTrialButtonProps> = (props) => {
   const { t } = useTranslation()
-  const { subscription } = useSubscription()
   const handleStartTrial = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth' // Smooth scrolling
     })
-  }
-
-  if (subscription === 'premium') {
-    return null
   }
 
   return (

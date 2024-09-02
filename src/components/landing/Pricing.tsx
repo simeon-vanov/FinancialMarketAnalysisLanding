@@ -1,6 +1,5 @@
 import * as React from 'react'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
 import Chip from '@mui/material/Chip'
 import CardActions from '@mui/material/CardActions'
@@ -13,6 +12,7 @@ import Typography from '@mui/material/Typography'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
 import { useAuth0 } from '@auth0/auth0-react'
+import { StartTrialButton } from './start-trial-button'
 
 export default function Pricing() {
   const { user, loginWithRedirect } = useAuth0()
@@ -42,7 +42,7 @@ export default function Pricing() {
     {
       title: 'Premium',
       subheader: 'Recommended',
-      price: '12.99',
+      price: '15.99',
       description: [
         'Everything in Basic',
         'Advanced charting tools',
@@ -109,7 +109,7 @@ export default function Pricing() {
     >
       <Box
         sx={{
-          width: { sm: '100%', md: '60%' },
+          width: { sm: '100%', md: '80%' },
           textAlign: { sm: 'left', md: 'center' }
         }}
       >
@@ -117,8 +117,17 @@ export default function Pricing() {
           Pricing
         </Typography>
         <Typography variant='body1' sx={{ color: 'text.secondary' }}>
-          We are so confident you are going to love our platform that we offer 14 days free trial for our Premium plan.
-          So you can start risk free and pay only if you are satisfied.
+          We are so confident you are going to love our platform that we offer{' '}
+          <Typography component='span' sx={{ fontWeight: 'bold' }}>
+            {' '}
+            14 days free trial{' '}
+          </Typography>
+          for our Premium plan. So you can start risk free and pay only if you are satisfied. If you join the waitlist
+          you will get a code for{' '}
+          <Typography component='span' sx={{ fontWeight: 'bold' }}>
+            20% off for the first 3 months{' '}
+          </Typography>
+          .
         </Typography>
       </Box>
       <Grid container spacing={3} sx={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -217,16 +226,7 @@ export default function Pricing() {
                 ))}
               </CardContent>
               <CardActions>
-                {tier.check() && (
-                  <Button
-                    fullWidth
-                    variant={tier.buttonVariant as 'outlined' | 'contained'}
-                    onClick={tier.onClick}
-                    disabled={tier.title === 'Premium (Coming Soon)'}
-                  >
-                    {tier.buttonText}
-                  </Button>
-                )}
+                <StartTrialButton fullWidth />
               </CardActions>
             </Card>
           </Grid>

@@ -23,6 +23,17 @@ export default function FAQ() {
         'Decode The Trade is a comprehensive trading platform designed to help traders at all levels identify profitable setups, manage risk, and build confidence in their trading strategies. We offer advanced tools like multi-frame analysis, historical insights, market state filters, and more to give you an edge in the market.'
     },
     {
+      id: 'panel31',
+      question: 'When will the platform be available?',
+      answer: 'Decode The Trade is already developed as an MVP would be available very soon.'
+    },
+    {
+      id: 'panel32',
+      question: 'What do I gain by joing the waitlist?',
+      answer:
+        'You will be notified when the platform has been deployed and you will be give a code for 20% off for the first 3 months.'
+    },
+    {
       id: 'panel2',
       question: 'How can Decode The Trade improve my trading?',
       answer:
