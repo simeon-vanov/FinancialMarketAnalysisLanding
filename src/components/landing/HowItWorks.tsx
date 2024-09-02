@@ -35,7 +35,7 @@ export const HowItWorks = () => {
             <CardContent>
               <Typography variant='h6'>Step 1 - Asset Selection</Typography>
               <Typography variant='subtitle1' gutterBottom>
-                Pick asset by volatility, strength and curren market state
+                Pick asset by volatility, strength and current market state
               </Typography>
               <img
                 src={`/static/screenshots/screener - portrait-${settings.theme}.png`}
