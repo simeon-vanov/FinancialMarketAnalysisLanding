@@ -26,7 +26,7 @@ const Overview: NextPage = () => {
         <meta property='og:title' content='Decode The Trade' />
         <meta
           property='og:description'
-          content='Decode The Trade is a platform for analyzing markets, identifying profitable setups and becoming a world-class trader.'
+          content='Decode The Trade is a platform for analyzing markets, identifying profitable setups, managing risk and becoming a world-class trader.'
         />
         <meta property='og:url' content='https://decodethetrade.com' />
         <meta property='og:image' content='https://decodethetrade.com/static/thumbnail.png' />
