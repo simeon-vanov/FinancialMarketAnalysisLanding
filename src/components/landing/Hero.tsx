@@ -8,8 +8,9 @@ import { styled } from '@mui/material/styles'
 import { useTheme } from '@emotion/react'
 import { useState } from 'react'
 import { visuallyHidden } from '@mui/utils'
-import { InputLabel, TextField } from '@mui/material'
+import { CircularProgress, InputLabel, TextField } from '@mui/material'
 import toast from 'react-hot-toast'
+import { useSettings } from 'hooks/use-settings'
 
 const StyledBox = styled('div')(({ theme }) => ({
   alignSelf: 'center',
@@ -62,27 +63,54 @@ export default function Hero() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false)
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
+  const { settings } = useSettings()
 
-  const joinTheWaitlist = () => {
+  const joinTheWaitlist = async () => {
+    if (loading) {
+      return
+    }
+
+    if (!validateEmail(email)) {
+      toast.error('Please enter a valid email address.')
+      return
+    }
+
     setLoading(true)
-    fetch(process.env.NEXT_PUBLIC_WAITLIST_URL as string, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email: email })
-    })
-      .then((response) => response.text())
-      .then(() => {
+    try {
+      const response = await fetch(process.env.NEXT_PUBLIC_WAITLIST_URL as string, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email })
+      })
+
+      console.log(response)
+
+      if (response.status === 200) {
         toast.success('Thank you for joining the waitlist!')
-        setLoading(false)
-      })
-      .catch((error) => {
-        console.error('Error:', error)
-        toast.error('There was an error with your request. Please try again.')
-        setLoading(false)
-      })
+      } else if (response.status === 400) {
+        const json = await response.text()
+        console.log(json)
+        if (json.includes('already')) {
+          toast.success('You are already on the waitlist!')
+        } else {
+          toast.error(json)
+        }
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      toast.error('There was an error with your request. Please try again.')
+    }
+
+    setLoading(false)
   }
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
+  }
+
   const theme = useTheme()
 
   return (
@@ -182,11 +210,27 @@ export default function Hero() {
               variant='contained'
               color='primary'
               size='small'
-              sx={{ minWidth: 'fit-content' }}
+              sx={{
+                minWidth: '130px',
+                position: 'relative' // Ensure positioning context for the loader
+              }}
               onClick={joinTheWaitlist}
-              disabled={loading}
             >
-              Join the Waitlist
+              {loading ? (
+                <CircularProgress
+                  size={24} // Adjust the size to fit inside the button
+                  sx={{
+                    color: 'text.main',
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    marginTop: '-12px', // Center the loader vertically
+                    marginLeft: '-12px' // Center the loader horizontally
+                  }}
+                />
+              ) : (
+                'Join the Waitlist'
+              )}
             </Button>
           </Stack>
         </Stack>
