@@ -9,6 +9,7 @@ import { useTheme } from '@emotion/react'
 import { useState } from 'react'
 import { visuallyHidden } from '@mui/utils'
 import { InputLabel, TextField } from '@mui/material'
+import toast from 'react-hot-toast'
 
 const StyledBox = styled('div')(({ theme }) => ({
   alignSelf: 'center',
@@ -59,7 +60,29 @@ const PlayIndicator = styled('div')(({}) => ({
 
 export default function Hero() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false)
+  const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
 
+  const joinTheWaitlist = () => {
+    setLoading(true)
+    fetch(process.env.NEXT_PUBLIC_WAITLIST_URL as string, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email: email })
+    })
+      .then((response) => response.text())
+      .then(() => {
+        toast.success('Thank you for joining the waitlist!')
+        setLoading(false)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+        toast.error('There was an error with your request. Please try again.')
+        setLoading(false)
+      })
+  }
   const theme = useTheme()
 
   return (
@@ -145,6 +168,8 @@ export default function Hero() {
               variant='outlined'
               aria-label='Enter your email address'
               placeholder='Your email address'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               fullWidth
               slotProps={{
                 htmlInput: {
@@ -153,7 +178,14 @@ export default function Hero() {
                 }
               }}
             />
-            <Button variant='contained' color='primary' size='small' sx={{ minWidth: 'fit-content' }}>
+            <Button
+              variant='contained'
+              color='primary'
+              size='small'
+              sx={{ minWidth: 'fit-content' }}
+              onClick={joinTheWaitlist}
+              disabled={loading}
+            >
               Join the Waitlist
             </Button>
           </Stack>
