@@ -10,7 +10,6 @@ import { useState } from 'react'
 import { visuallyHidden } from '@mui/utils'
 import { CircularProgress, InputLabel, TextField } from '@mui/material'
 import toast from 'react-hot-toast'
-import { useSettings } from 'hooks/use-settings'
 
 const StyledBox = styled('div')(({ theme }) => ({
   alignSelf: 'center',
@@ -63,7 +62,6 @@ export default function Hero() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false)
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
-  const { settings } = useSettings()
 
   const joinTheWaitlist = async () => {
     if (loading) {
