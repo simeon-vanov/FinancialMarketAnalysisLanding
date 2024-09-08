@@ -14,7 +14,7 @@ const PermissionRequired: NextPage = () => {
   const { subscription } = useSubscription()
 
   useEffect(() => {
-    gtm.push({ event: 'page_view' })
+    gtm.push()
   }, [])
 
   return (

@@ -47,7 +47,7 @@ const BlogPostDetails: NextPage = () => {
   }, [post])
 
   useEffect(() => {
-    gtm.push({ event: 'page_view' })
+    gtm.push()
   }, [])
 
   if (!post) {

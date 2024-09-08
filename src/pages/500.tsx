@@ -11,7 +11,7 @@ const ServerError: NextPage = () => {
   const mobileDevice = useMediaQuery(theme.breakpoints.down('sm'))
 
   useEffect(() => {
-    gtm.push({ event: 'page_view' })
+    gtm.push()
   }, [])
 
   return (

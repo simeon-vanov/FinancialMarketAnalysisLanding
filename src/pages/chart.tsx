@@ -134,7 +134,7 @@ const ChartAnalysis: NextPage = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    gtm.push({ event: 'page_view' })
+    gtm.push()
 
     let queryInstrument = router.query.instrument as Instrument
     let queryTimeFrame = router.query.timeFrame as TimeFrame

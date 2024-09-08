@@ -17,7 +17,7 @@ const ScreenerPage: NextPage = () => {
   const [selectedInstrument, setSelectedInstrument] = useState<Instrument>()
   const screenerTableRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    gtm.push({ event: 'page_view' })
+    gtm.push()
   }, [])
 
   const handleInstrumentClick = (instrument: Instrument) => {

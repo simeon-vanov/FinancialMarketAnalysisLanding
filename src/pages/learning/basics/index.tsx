@@ -6,7 +6,7 @@ import BlogPostList from 'components/blog/blog-post-list'
 
 const BlogBasicsOfTrading: NextPage = () => {
   useEffect(() => {
-    gtm.push({ event: 'page_view' })
+    gtm.push()
   }, [])
 
   return (
