@@ -9,7 +9,7 @@ import { gtm } from 'lib/gtm'
 
 const Account: NextPage = () => {
   useEffect(() => {
-    gtm.push({ event: 'page_view' })
+    gtm.push()
   }, [])
 
   return (

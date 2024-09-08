@@ -16,7 +16,7 @@ import { Element } from 'react-scroll'
 
 const Overview: NextPage = () => {
   useEffect(() => {
-    gtm.push({ event: 'page_view' })
+    gtm.push()
   }, [])
 
   return (

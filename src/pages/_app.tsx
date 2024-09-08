@@ -10,7 +10,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import { RTL } from '../components/common/rtl'
 import { SettingsConsumer, SettingsProvider } from '../contexts/settings-context'
-import { gtmConfig } from 'configs/urls'
 import { gtm } from '../lib/gtm'
 import '../i18n'
 import 'styles/global.css'
@@ -32,7 +31,7 @@ const App: FC<EnhancedAppProps> = (props) => {
   const getLayout = Component.getLayout ?? ((page) => page)
 
   useEffect(() => {
-    gtm.initialize(gtmConfig)
+    gtm.initialize()
   }, [])
 
   return (
